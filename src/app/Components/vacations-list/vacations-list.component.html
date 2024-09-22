@@ -1,0 +1,36 @@
+<table class="vacation-table" dir="rtl">
+  <thead>
+    <tr>
+      <th>اسم الموظف</th>
+      <th>تاريخ بدء الإجازة</th>
+      <th>تاريخ نهاية الإجازة</th>
+      <th>مدة الإجازة</th>
+      <th>نوع الإجازة</th>
+      <th>حالة الإجازة</th>
+      <th>تحديث الحالة</th> <!-- New column for button -->
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let employee of filteredEmployees">
+      <td>
+        <img [src]="employee.profilePicture" alt="صورة الموظف" class="profile-img">
+        <span class="employee-name">{{ employee.name }}</span>
+      </td>
+      <td>{{ employee.vacationStartDate | date: 'MMM dd, yyyy' }}</td>
+      <td>{{ employee.vacationEndDate | date: 'MMM dd, yyyy' }}</td>
+      <td>{{ employee.vacationDays }}</td>
+      <td>{{ employee.vacationType }}</td>
+      <td>
+        <span *ngIf="employee.state === 'مقبولة'" class="status accepted">✔️ مقبولة</span>
+        <span *ngIf="employee.state === 'مرفوضة'" class="status rejected">❌ مرفوضة</span>
+        <span *ngIf="employee.state === 'قيد الانتظار'" class="status pending">🔄 قيد التنفيذ</span>
+      </td>
+      <td>
+        <!-- New button to activate vacation -->
+        <button *ngIf="employee.state !== 'مقبولة'" (click)="acceptVacation(employee)" class="accept-button">
+          قبول
+        </button>
+      </td>
+    </tr>
+  </tbody>
+</table>

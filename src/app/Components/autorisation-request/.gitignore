@@ -1,0 +1,45 @@
+# Node.js dependencies
+node_modules/
+npm-debug.log
+yarn-error.log
+
+# Compiled output
+dist/
+out-tsc/
+
+# IDE and editor files
+.vscode/
+.idea/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.log
+*.swp
+
+# Angular specific
+.angular/
+.angular-cli.json
+
+# Generated files
+coverage/
+logs/
+*.log
+
+# Temporary files
+tmp/
+temp/
+*.tmp
+*.temp
+
+# MacOS files
+.DS_Store
+
+# Windows files
+Thumbs.db
+Desktop.ini
+
+# Ignore test-related files
+karma.conf.js
+protractor.conf.js
+e2e/

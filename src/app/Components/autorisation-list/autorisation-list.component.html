@@ -1,0 +1,30 @@
+<div class="search-container">
+  <input type="text" [(ngModel)]="searchTerm" placeholder="ابحث عن الإذن" class="search-input" dir="rtl">
+  <i class="fas fa-search search-icon"></i>
+</div>
+
+<table class="authorization-table" dir="rtl">
+  <thead>
+    <tr>
+      <th>اسم الموظف</th>
+      <th>تاريخ الإذن</th>
+      <th>مدة الإذن</th>
+      <th>نوع الإذن</th>
+      <th>حالة الإذن</th> <!-- State column for accepted/rejected/in-progress -->
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let authorization of filteredAuthorizations">
+        <img src="https://randomuser.me/api/portraits/men/1.jpg" alt="Employee Image" class="employee-image">
+        {{ authorization.employeeName }}
+      <td>{{ authorization.authorizationDate | date: 'MMM dd, yyyy' }}</td>
+      <td>{{ authorization.lateDuration }}</td>
+      <td>{{ authorization.authorizationType }}</td>
+      <td>
+        <span *ngIf="authorization.state === 'مقبولة'" class="status accepted">✔️ مقبولة</span>
+        <span *ngIf="authorization.state === 'مرفوضة'" class="status rejected">❌ مرفوضة</span>
+        <span *ngIf="authorization.state === 'قيد التنفيذ'" class="status pending">🔄 قيد التنفيذ</span>
+      </td>
+    </tr>
+  </tbody>
+</table>
